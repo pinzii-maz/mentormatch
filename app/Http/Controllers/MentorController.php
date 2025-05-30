@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Mentor;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +32,7 @@ class MentorController extends Controller
 
         $mentorRole = Role::where('slug', 'mentor')->first();
 
-        $user = User::create([
+        $user = Mentor::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
