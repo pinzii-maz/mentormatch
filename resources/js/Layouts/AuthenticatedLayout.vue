@@ -149,13 +149,9 @@ const showingNavigationDropdown = ref(false);
                     </div>
 
                     <!-- Responsive Settings Options -->
-                    <div
-                        class="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600"
-                    >
+                    <div class="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600">
                         <div class="px-4">
-                            <div
-                                class="text-base font-medium text-gray-800 dark:text-gray-200"
-                            >
+                            <div class="text-base font-medium text-gray-800 dark:text-gray-200">
                                 {{ $page.props.auth.user.name }}
                             </div>
                             <div class="text-sm font-medium text-gray-500">

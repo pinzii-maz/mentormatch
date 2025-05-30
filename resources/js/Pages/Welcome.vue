@@ -1,9 +1,10 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { Link } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import { Link } from "@inertiajs/vue3";
+import { ref } from "vue";
 
+const isMenuOpen = ref(false);
 
 const features = [
     {
@@ -47,49 +48,80 @@ const testimonials = [
 ];
 
 const testiIdx = ref(0);
-function nextTesti() { testiIdx.value = (testiIdx.value + 1) % testimonials.length; }
-function prevTesti() { testiIdx.value = (testiIdx.value - 1 + testimonials.length) % testimonials.length; }
+function nextTesti() {
+    testiIdx.value = (testiIdx.value + 1) % testimonials.length;
+}
+function prevTesti() {
+    testiIdx.value =
+        (testiIdx.value - 1 + testimonials.length) % testimonials.length;
+}
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-    <!-- Navbar -->
-    <nav class="relative px-6 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between">
-          <!-- Logo and Brand -->
-          <div class="flex items-center space-x-3">
-            <ApplicationLogo />
-            <span class="text-2xl font-bold text-blue-700 dark:text-blue-300 tracking-tight">MentorMatch</span>
-          </div>
+    <div
+        class="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+    >
+        <!-- Navbar -->
+        <nav
+            class="relative px-6 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm"
+        >
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center justify-between">
+                    <!-- Logo and Brand -->
+                    <div class="flex items-center space-x-3">
+                        <ApplicationLogo />
+                        <span
+                            class="text-2xl font-bold text-blue-700 dark:text-blue-300 tracking-tight"
+                            >MentorMatch</span
+                        >
+                    </div>
 
-          <!-- Desktop Menu -->
-          <div class="hidden md:flex items-center space-x-4">
-            <Link :href="route('login')" class="text-blue-700 dark:text-blue-200 font-semibold hover:underline">Login</Link>
-            <ColorSchemeToggle />
-          </div>
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-4">
+                        <Link :href="route('login')" class="text-blue-700 dark:text-blue-200 font-semibold hover:underline">Login</Link>
+                    </div>
 
-          <!-- Mobile Menu Button -->
-          <button @click="isMenuOpen = !isMenuOpen" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path v-if="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+                    <!-- Mobile Menu Button -->
+                    <button
+                        @click="isMenuOpen = !isMenuOpen"
+                        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-gray-600 dark:text-gray-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                v-if="!isMenuOpen"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                            <path
+                                v-else
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </div>
 
-        <!-- Mobile Menu -->
-        <div v-show="isMenuOpen" class="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700">
-          <div class="flex flex-col gap-4">
-            <Link :href="route('login')" class="text-blue-700 dark:text-blue-200 font-semibold hover:underline">Login</Link>
-            <div class="flex items-center gap-2">
-              <span class="text-gray-600 dark:text-gray-300">Theme:</span>
-              <ColorSchemeToggle />
+                <!-- Mobile Menu -->
+                <div
+                    v-show="isMenuOpen"
+                    class="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700"
+                >
+                    <div class="flex flex-col gap-4">
+                        <Link :href="route('login')" class="text-blue-700 dark:text-blue-200 font-semibold hover:underline">Login</Link>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+        </nav>
 
         <!-- Hero Section -->
         <section
@@ -112,7 +144,7 @@ function prevTesti() { testiIdx.value = (testiIdx.value - 1 + testimonials.lengt
                     pilihan!
                 </p>
                 <div class="flex gap-4 flex-wrap">
-                    <Link :href="route('register')">
+                    <Link :href="route('register.mentee')">
                         <PrimaryButton
                             class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg"
                             >Gabung sebagai Mentee</PrimaryButton
@@ -144,7 +176,7 @@ function prevTesti() { testiIdx.value = (testiIdx.value - 1 + testimonials.lengt
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <div
-                    v-for="f in features"
+                    v-for="f in features"   
                     :key="f.title"
                     class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 flex flex-col items-center text-center hover:scale-105 transition-transform"
                 >

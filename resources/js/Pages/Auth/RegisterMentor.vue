@@ -29,7 +29,7 @@ function handleFile(e) {
 }
 
 const submit = () => {
-    form.post(route('register.mentor'), {
+    form.post(route('register.mentor.store'), {
         onFinish: () => form.reset('password', 'file'),
     });
 };

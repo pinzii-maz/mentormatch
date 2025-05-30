@@ -16,9 +16,24 @@ Route::get('/', function () {
     ]);
 });
 
+// Redirect authenticated users to their role-specific dashboard
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Mentor Routes
+Route::middleware(['auth', 'role:mentor'])->prefix('mentor')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Mentor/Dashboard');
+    })->name('mentor.dashboard');
+});
+
+// Mentee Routes
+Route::middleware(['auth', 'role:mentee'])->prefix('mentee')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Mentee/Dashboard');
+    })->name('mentee.dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -26,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Mentor Registration Routes
+// Registration Routes
 Route::get('/register/mentor', [MentorController::class, 'create'])->name('register.mentor');
 Route::post('/register/mentor', [MentorController::class, 'store'])->name('register.mentor.store');
 
