@@ -1,8 +1,9 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import ColorSchemeToggle from '@/Components/ColorSchemeToggle.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Link } from '@inertiajs/vue3';
+import { ref } from 'vue';
+
 
 const features = [
   {
@@ -45,7 +46,6 @@ const testimonials = [
   },
 ];
 
-import { ref } from 'vue';
 const testiIdx = ref(0);
 function nextTesti() { testiIdx.value = (testiIdx.value + 1) % testimonials.length; }
 function prevTesti() { testiIdx.value = (testiIdx.value - 1 + testimonials.length) % testimonials.length; }
@@ -54,14 +54,40 @@ function prevTesti() { testiIdx.value = (testiIdx.value - 1 + testimonials.lengt
 <template>
   <div class="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
     <!-- Navbar -->
-    <nav class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full">
-      <div class="flex items-center gap-2">
-        <ApplicationLogo class="h-10 w-10" />
-        <span class="text-2xl font-bold text-blue-700 dark:text-blue-300 tracking-tight">MentorMatch</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <Link :href="route('login')" class="text-blue-700 dark:text-blue-200 font-semibold hover:underline">Login</Link>
-        <ColorSchemeToggle />
+    <nav class="relative px-6 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+          <!-- Logo and Brand -->
+          <div class="flex items-center space-x-3">
+            <ApplicationLogo />
+            <span class="text-2xl font-bold text-blue-700 dark:text-blue-300 tracking-tight">MentorMatch</span>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-4">
+            <Link :href="route('login')" class="text-blue-700 dark:text-blue-200 font-semibold hover:underline">Login</Link>
+            <ColorSchemeToggle />
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button @click="isMenuOpen = !isMenuOpen" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path v-if="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div v-show="isMenuOpen" class="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-700">
+          <div class="flex flex-col gap-4">
+            <Link :href="route('login')" class="text-blue-700 dark:text-blue-200 font-semibold hover:underline">Login</Link>
+            <div class="flex items-center gap-2">
+              <span class="text-gray-600 dark:text-gray-300">Theme:</span>
+              <ColorSchemeToggle />
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 

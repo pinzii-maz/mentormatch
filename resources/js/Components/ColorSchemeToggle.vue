@@ -1,8 +1,7 @@
-<!-- resources/js/Components/ColorSchemeToggle.vue -->
 <template>
   <button @click="toggleTheme" class="p-2 rounded bg-gray-200 dark:bg-gray-700">
-    <span v-if="theme === 'dark'">☀️ Light</span>
-    <span v-else>🌙 Dark</span>
+    <span v-if="theme === 'dark'" class="text-gray-800 dark:text-gray-200">☀️ Light</span>
+    <span v-else class="text-gray-800 dark:text-gray-200">🌙 Dark</span>
   </button>
 </template>
 
