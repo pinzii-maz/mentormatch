@@ -33,6 +33,9 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+    Route::get('register-mentor', [App\Http\Controllers\Auth\RegisterMentorController::class, 'create'])->name('register.mentor');
+    Route::post('register-mentor', [App\Http\Controllers\Auth\RegisterMentorController::class, 'store']);
 });
 
 Route::middleware('auth')->group(function () {

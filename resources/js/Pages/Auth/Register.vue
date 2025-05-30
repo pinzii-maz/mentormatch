@@ -8,6 +8,8 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
     name: '',
+    gender: '',
+    education: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -26,8 +28,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
-
+                <InputLabel for="name" value="Nama Lengkap" />
                 <TextInput
                     id="name"
                     type="text"
@@ -37,13 +38,33 @@ const submit = () => {
                     autofocus
                     autocomplete="name"
                 />
-
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="gender" value="Jenis Kelamin" />
+                <select id="gender" v-model="form.gender" required class="mt-1 block w-full rounded border-gray-300 dark:bg-gray-800 dark:text-white">
+                    <option value="" disabled>Pilih jenis kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+                <InputError class="mt-2" :message="form.errors.gender" />
+            </div>
 
+            <div class="mt-4">
+                <InputLabel for="education" value="Jenjang Pendidikan" />
+                <select id="education" v-model="form.education" required class="mt-1 block w-full rounded border-gray-300 dark:bg-gray-800 dark:text-white">
+                    <option value="" disabled>Pilih jenjang pendidikan</option>
+                    <option value="SD">SD</option>
+                    <option value="SMP">SMP</option>
+                    <option value="SMA">SMA</option>
+                    <option value="Perguruan tinggi">Perguruan tinggi</option>
+                </select>
+                <InputError class="mt-2" :message="form.errors.education" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="email" value="Email" />
                 <TextInput
                     id="email"
                     type="email"
@@ -52,13 +73,11 @@ const submit = () => {
                     required
                     autocomplete="username"
                 />
-
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
                 <InputLabel for="password" value="Password" />
-
                 <TextInput
                     id="password"
                     type="password"
@@ -67,16 +86,11 @@ const submit = () => {
                     required
                     autocomplete="new-password"
                 />
-
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="mt-4">
-                <InputLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
-
+                <InputLabel for="password_confirmation" value="Konfirmasi Password" />
                 <TextInput
                     id="password_confirmation"
                     type="password"
@@ -85,11 +99,7 @@ const submit = () => {
                     required
                     autocomplete="new-password"
                 />
-
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.password_confirmation"
-                />
+                <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
             <div class="mt-4 flex items-center justify-end">
