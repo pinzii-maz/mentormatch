@@ -12,6 +12,7 @@ const form = useForm({
     phone: '',
     email: '',
     password: '',
+    password_confirmation: '',
     gender: '',
     education: '',
     job: '',
@@ -72,6 +73,11 @@ const submit = () => {
                 </div>
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
+                        <InputLabel for="password_confirmation" value="Konfirmasi Password" />
+                        <TextInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                        <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                    </div>
+                    <div>
                         <InputLabel for="gender" value="Jenis Kelamin" />
                         <select id="gender" v-model="form.gender" required class="mt-1 block w-full rounded border-gray-300 dark:bg-gray-800 dark:text-white focus:ring-2 focus:ring-blue-400">
                             <option value="" disabled>Pilih jenis kelamin</option>
@@ -80,6 +86,8 @@ const submit = () => {
                         </select>
                         <InputError class="mt-2" :message="form.errors.gender" />
                     </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <InputLabel for="education" value="Pendidikan Terakhir" />
                         <select id="education" v-model="form.education" required class="mt-1 block w-full rounded border-gray-300 dark:bg-gray-800 dark:text-white focus:ring-2 focus:ring-blue-400">
@@ -91,13 +99,13 @@ const submit = () => {
                         </select>
                         <InputError class="mt-2" :message="form.errors.education" />
                     </div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <InputLabel for="job" value="Pekerjaan Saat Ini" />
                         <TextInput id="job" type="text" class="mt-1 block w-full" v-model="form.job" required />
                         <InputError class="mt-2" :message="form.errors.job" />
                     </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <InputLabel for="expertise" value="Bidang Keahlian" />
                         <TextInput id="expertise" type="text" class="mt-1 block w-full" v-model="form.expertise" required />
@@ -128,4 +136,4 @@ const submit = () => {
             </form>
         </div>
     </GuestLayout>
-</template> 
+</template>
