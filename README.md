@@ -8,22 +8,19 @@ Platform ini membantu pengguna menemukan mentor atau mentee yang sesuai berdasar
 
 ## Fitur Utama
 
-* **Pencarian Cerdas:** Temukan mentor atau mentee berdasarkan kriteria spesifik seperti keahlian, industri, lokasi (jika relevan), pengalaman, dll.
-* **Profil Pengguna Komprehensif:** Pengguna dapat membuat profil detail yang menyoroti keahlian, pengalaman, tujuan mentoring, dan minat mereka.
+* **Pencarian Cerdas:** Temukan mentor atau mentee berdasarkan kriteria spesifik seperti pembelajaraan, keahlian, industri, pengalaman, dll.
+* **Profil Pengguna Komprehensif:** Pengguna dapat membuat profil detail yang menyoroti keahlian dan minat mereka.
 * **Permintaan Mentoring:** Sistem untuk mengirim dan menerima permintaan mentoring dengan mudah.
-* **Penjadwalan Sesi:** (Jika ada) Fitur untuk membantu menjadwalkan sesi mentoring.
-* **Komunikasi Internal:** (Jika ada) Sistem pesan internal untuk komunikasi yang aman antara mentor dan mentee.
-* **Sumber Daya & Artikel:** (Jika ada) Akses ke artikel, panduan, dan sumber daya terkait mentoring.
-* **Sistem Ulasan & Rekomendasi:** (Jika ada) Pengguna dapat memberikan ulasan dan rekomendasi untuk mentor atau mentee.
+* **Penjadwalan Sesi:** Fitur untuk membantu menjadwalkan sesi mentoring.
+* **Sistem Ulasan:** Pengguna dapat memberikan ulasan
 * **Dasbor Pengguna:** Panel kontrol pribadi untuk mengelola koneksi, permintaan, dan progres mentoring.
 
-## Teknologi yang Digunakan (Contoh)
+## Teknologi yang Digunakan 
 
 * **Backend:** Laravel (PHP)
-* **Frontend:** Vue.js / React / Blade
-* **Database:** MySQL / PostgreSQL
-* **Styling:** Tailwind CSS / Bootstrap
-* **Lainnya:** (Sebutkan teknologi lain seperti Inertia.js, Redis, dll.)
+* **Frontend:** Vue.js
+* **Database:** MySQL
+* **Styling:** Tailwind CSS
 
 ## Prasyarat
 
